@@ -1,0 +1,52 @@
+// Mixins
+@mixin container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin grid($min-width) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+    gap: 30px;
+}
+
+@mixin card {
+    background: $white;
+    padding: $card-padding;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    transition: transform $transition;
+    
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@mixin button-outline {
+    background: transparent;
+    border: 2px solid $btn-dark;
+    color: $btn-dark;
+    padding: 12px 24px;
+    border-radius: $border-radius;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all $transition;
+    
+    &:hover {
+        background: $btn-dark;
+        color: $white;
+    }
+}

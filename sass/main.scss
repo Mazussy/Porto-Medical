@@ -1,0 +1,315 @@
+@import 'variables';
+@import 'reset';
+@import 'mixins';
+
+// Body adjustment for fixed header
+body {
+    padding-top: 70px; // Adjust based on header height
+}
+
+// Container
+.container {
+    @include container;
+}
+
+// Header
+.header {
+    background: $white;
+    padding: 30px 0;
+    box-shadow: $shadow;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    
+    .container {
+        @include flex-between;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    img {
+        height: 40px;
+        width: auto;
+    }
+    
+    .logo-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: $primary-blue;
+    }
+    
+    .logo-sub {
+        font-size: 12px;
+        color: $text-light;
+    }
+}
+
+.nav {
+    display: flex;
+    gap: 33px;
+    align-items: center;
+    
+    .nav-link {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        line-height: 24px;
+        color: $primary-blue;
+        transition: color 0.2s ease-in-out;
+        
+        &:hover {
+            color: $primary-blue;
+        }
+        
+        &.cta {
+            background: $secondary-blue;
+            color: $white;
+            padding: 8px 16px;
+            
+            &:hover {
+                color: $white;
+            }
+        }
+        
+        &.buy-porto {
+            background: $primary-blue;
+            color: $white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            
+            &:hover {
+                background: darken($primary-blue, 10%);
+            }
+        }
+    }
+}
+
+// Hero
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('../Assets/medical-slide-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 200px 0;
+    color: $white;
+    min-height: 70vh;
+    
+    .container {
+        text-align: left;
+        max-width: 1200px;
+        padding-left: 60px;
+    }
+    
+    h1 {
+        font-size: $font-large;
+        font-weight: 900;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+    
+    .hero-subtitle {
+        font-size: $font-small;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    
+    .hero-location {
+        font-size: $font-small;
+        opacity: 0.9;
+        text-decoration: underline;
+    }
+}
+
+// Sections
+.departments, .doctors {
+    padding: $section-padding 0;
+}
+
+.departments {
+    background: $bg-gray;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    
+    h2 {
+        font-size: $font-medium;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: $text-dark;
+    }
+    
+    p {
+        font-size: $font-body;
+        color: $text-light;
+    }
+}
+
+.doctors .section-header {
+    @include flex-between;
+    text-align: left;
+}
+
+.section-action {
+    text-align: center;
+    margin-top: 40px;
+}
+
+// Grids
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.doctors-grid {
+    @include grid(250px);
+}
+
+// Cards
+.department-card {
+    background: transparent;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    text-align: left;
+    
+    .card-icon {
+        flex-shrink: 0;
+        
+        img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+        }
+    }
+    
+    .card-content {
+        flex: 1;
+    }
+    
+    h3 {
+        font-size: 20px;
+        color: $primary-blue;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    
+    p {
+        color: $text-light;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+
+.doctor-card {
+    @include card;
+    padding: 0;
+    overflow: hidden;
+    
+    .doctor-image {
+        height: 250px;
+        overflow: hidden;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    
+    .doctor-info {
+        padding: 20px;
+        position: relative;
+        
+        .specialty {
+            font-size: 14px;
+            color: $text-light;
+            margin-bottom: 5px;
+        }
+        
+        .doctor-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: $text-dark;
+        }
+        
+        .card-arrow {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: $primary-blue;
+        }
+    }
+}
+
+// Buttons
+.btn-outline {
+    @include button-outline;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid $border-gray;
+    border-radius: 50%;
+    @include flex-center;
+    font-size: 18px;
+    color: $text-dark;
+    transition: all $transition;
+    
+    &:hover {
+        background: $primary-blue;
+        color: $white;
+        border-color: $primary-blue;
+    }
+}
+
+// Responsive
+@media (max-width: 992px) {
+    .departments-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .departments-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .doctors-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .doctors .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
